@@ -41,6 +41,24 @@
                 <button onclick="seeAll()" class="btn btn-success">Show All</button>
             </div>
 
+            <!-- show details phone modal  -->
+
+            <!-- Open the modal using ID.showModal() method -->
+<dialog id="showDetails" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box text-center">
+    <h3 id="name" class="font-bold text-lg"></h3>
+    <div id="details-container" class="text-center">
+        
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
         </section>
     </main>
     <footer>

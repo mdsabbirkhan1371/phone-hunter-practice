@@ -22,7 +22,7 @@ const disPlayPhones = (phones,isShowAll)=>{
     }
     
     // slice phone to display only 12 and add isShow all;
-    console.log('is show all',isShowAll)
+    // console.log('is show all',isShowAll)
     if(!isShowAll){
         phones= phones.slice(0,12);
     }
@@ -30,8 +30,8 @@ const disPlayPhones = (phones,isShowAll)=>{
     
 
     phones.forEach(phone => {
-        console.log(phone)
-        const {image,phone_name,brand} = phone;
+        // console.log(phone)
+        const {image,phone_name,brand,slug} = phone;
         const phoneCard = document.createElement('div');
         phoneCard.classList = `card bg-gray-100 p-4 shadow-xl`
         phoneCard.innerHTML = `
@@ -42,8 +42,8 @@ const disPlayPhones = (phones,isShowAll)=>{
                     <div class="card-body">
                       <h2 class="card-title">${phone_name}!</h2>
                       <p>If a dog chews shoes whose shoes does he choose?</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Show Details</button>
+                      <div class="card-actions justify-center">
+                        <button onclick="handleDetails('${slug}')" class="btn btn-primary">See Details</button>
                       </div>
                     </div>
         `
@@ -84,4 +84,36 @@ const addSpinner =(isLoading)=>{
 
 const seeAll =() =>{
     handLeSearch(true)
+}
+
+// see details phone hanlde  function
+
+const handleDetails =async(id)=>{
+   const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+   const data = await res.json();
+//    console.log(data)
+   const phone = data.data;
+   showDetails.showModal()
+
+   seeDetails(phone)
+}
+
+// see details of phone
+const seeDetails =(phone)=>{
+console.log(phone)
+const {image,brand,releaseDate,name} =phone;
+
+    const phoneName = document.getElementById('name');
+    phoneName.innerText =name;
+    const deatilsContainer = document.getElementById('details-container');
+    deatilsContainer.innerHTML = `
+    <img class="w-50 mx-auto my-2" src="${image}"/>
+    <h3>Brand: ${brand}</3>
+    <p>Release Date: ${releaseDate}</p>
+    <h3>Display: ${phone.mainFeatures.displaySize}</>
+    <h3>Memory: ${phone.mainFeatures.memory}</>
+    <h3>Chipset: ${phone.mainFeatures.chipSet}</>
+    <h3>Brand: ${phone.mainFeatures.storage}</>
+    
+    `
 }
