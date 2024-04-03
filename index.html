@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-slate-400">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>phone Hunter</title>
+    <!-- tailwind css link  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<bod>
+    <header>
+        <h3 class="text-2xl text-center m-12">Hello Phone Hunter</h3>
+    </header>
+    <main class="container mx-auto">
+
+        <!-- search section  -->
+        <section>
+            <div class="bg-gray-50 p-4 rounded mb-5">
+                <input id="inputField" type="text" placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs mb-5" />
+                <button onclick="handLeSearch()" id="button" class="btn btn-accent mx-3">Search</button>
+            </div>
+        </section>
+
+        <!-- items of phone card -->
+        <section>
+            <!-- spinner section  -->
+            <div id="loading-spinner" class="text-center my-40 hidden">
+                <span  class="loading loading-spinner text-info"></span>
+
+            </div>
+
+            <!-- card section  -->
+            <div id="phones-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+            </div>
+
+            <!-- show all section  -->
+            <div id="button-container" class="hidden text-center my-5">
+                <button onclick="seeAll()" class="btn btn-success">Show All</button>
+            </div>
+
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    
+    <!-- js connection  -->
+    <script src="js/phone.js"></script>
+</body>
+</html>
